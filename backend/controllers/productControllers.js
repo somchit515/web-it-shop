@@ -5,7 +5,7 @@ import APIFilters from "../utils/apiFilter.js";
 import ErrorHandler from "../utils/errorHandler.js";
 
 // Get all products => /api/v1/products
-export const getProducts = catchAsyncErrors(async (req, res) => {
+export const getProducts = catchAsyncErrors(async (req, res, next) => {
   const resPerPage = 4; // Products per page for pagination
 
   // Initialize API filters with search and filters
@@ -17,6 +17,7 @@ export const getProducts = catchAsyncErrors(async (req, res) => {
   let products = await apiFilters.query;
   let filteredProductsCount = products.length;
 
+  
   // Apply pagination (for current page)
   apiFilters.pagination(resPerPage);
 

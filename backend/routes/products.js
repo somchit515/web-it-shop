@@ -14,7 +14,7 @@ const router = express.Router();
 
 router
   .route("/products")
-  .get(isAuthenticatedUser, authorizeRoles("admin"), getProducts);
+  .get( getProducts);
 router
   .route("/admin/products")
   .post(isAuthenticatedUser, authorizeRoles("admin"), newProduct);
